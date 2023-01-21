@@ -1,0 +1,117 @@
+<%- include('layouts/header'); -%>
+<body>
+  <%- include('layouts/nav'); -%>
+  <section class="w50">
+    <form name="myform" method="Post" onsubmit="return formSubmit();"  action="" >
+      <label>Name</label>
+      <input id="name" placeholder="First Last" type="text" name="name"><br/>
+
+      <label>Email</label>
+      <input id="email" placeholder="email@domain.com" type="text" name="email"><br/>
+
+      <label>Phone</label>
+      <input id="phone" placeholder="123-123-1234" type="phone" name="phone"><br/>
+
+      <label>Post Code</label>
+      <input id="postcode" placeholder="X9X 9X9" type="postcode" name="postcode"><br/>
+      
+      <label>Will you have lunch?</label>
+      <input type="radio" value="yes" id="radio1" name="lunch">Yes
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="radio" value="no" id="radio2" name="lunch">No
+      <br/>
+
+      <label>Number of Tickets</label>
+      <select name="tickets" id="tickets">
+          <option value="">----- Select -----</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+      </select><br/>
+
+      <label>Which Campus?</label>
+      <select name="campus" id="campus">
+          <option value="">----- Select -----</option>
+          <option value="Doon">Doon</option>
+          <option value="Waterloo">Waterloo</option>
+          <option value="Cambridge">Cambridge</option>
+      </select>
+
+      <br/><br/>
+
+      <input type="submit" value="Submit">
+      <p id="errors"></p>
+    </form>  
+</section>
+<section class="w50">
+  <div class="formData">
+    <% 
+      if (typeof(errors) != 'undefined')
+      {
+        for (let error of errors)
+        {
+    %>
+          <p class="errors"> <%= error.msg %></p>
+    <%
+        }
+      }
+    %>
+
+    <% 
+      if(typeof(total) != 'undefined')
+      {
+    %>
+        <p id="formResult">Your Receipt:</p>
+    <table>
+      <tr>
+        <th>Name:</th>
+        <td> <%= name %> </td>
+      </tr>
+      <tr>
+        <th>Email:</th>
+        <td> <%= email %> </td>
+      </tr>
+      <tr>
+        <th>Phone:</th>
+        <td> <%= phone %> </td>
+      </tr>
+      <tr>
+        <th>Post Code:</th>
+        <td> <%= postcode %> </td>
+      </tr>
+      <tr>
+        <th>Lunch:</th>
+        <td> <%= lunch %> </td>
+      </tr>
+      <tr>
+        <th>Tickets:</th>
+        <td> <%= tickets %> </td>
+      </tr>
+      <tr>
+        <th>Campus:</th>
+        <td> <%= campus %> </td>
+      </tr>
+      <tr>
+        <th>Sub Total:</th>
+        <td>$<%= subTotal.toFixed(2) %> </td>
+      </tr>
+      <tr>
+        <th>Tax:</th>
+        <td> $<%= tax.toFixed(2) %> </td>
+      </tr>
+      <tr>
+        <th>Total:</th>
+        <td> $<%= total.toFixed(2) %> </td>
+      </tr>
+    </table>
+    <%
+      }
+    %>
+
+  </div>
+</section>
+<div class="clear"></div>
+</body>
+<%- include('layouts/footer'); -%>

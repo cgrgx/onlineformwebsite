@@ -1,0 +1,27 @@
+<%- include('layouts/header'); -%>
+<body>
+  <%- include('layouts/nav'); -%>
+  <section class="w50">
+    <div class="formData">
+        <p>This website was built using the following technologies:</p>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>Js</li>
+            <li>Node.js</li>
+            <li>Express</li>
+            <li>EJS</li>
+        </ul>
+    </div>
+</section>
+<section class="w50">
+  <div class="formData">
+    <p>Built By:</p>
+    <ul>
+        <li><%= name %></li>
+        <li><%= studentNumber %></li>
+    </ul>
+  </div>
+</section>
+</body>
+<%- include('layouts/footer'); -%>

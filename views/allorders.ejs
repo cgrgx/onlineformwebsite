@@ -1,0 +1,46 @@
+<%- include('layouts/header'); -%>
+<body>
+    <%- include('layouts/nav'); -%>
+    <section>
+        <a href="/logout">Logout</a>
+        <table>
+        <thead>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Post Code</th>
+            <th>Lunch</th>
+            <th>Tickets</th>
+            <th>Campus</th>
+            <th>Sub Total</th>
+            <th>Tax</th>
+            <th>Total</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </thead>
+        <tbody>
+            <%
+                for(var order of orders) {
+            %>
+            <tr>
+                <td><%= order.name %></td>
+                <td><%= order.email %></td>
+                <td><%= order.phone %></td>
+                <td><%= order.postcode %></td>
+                <td><%= order.lunch %></td>
+                <td><%= order.tickets %></td>
+                <td><%= order.campus %></td>
+                <td>$<%= order.subTotal.toFixed(2) %></td>
+                <td>$<%= order.tax.toFixed(2) %></td>
+                <td>$<%= order.total.toFixed(2) %></td>
+                <td><a href="/delete/<%= order._id %>">Delete</a></td>
+                <td><a href="/edit/<%= order._id %>">Edit</a></td>
+            </tr>
+            <%
+                }
+            %>
+        </tbody>
+    </table>
+    </section>
+</body>
+<%- include('layouts/footer'); -%>

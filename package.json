@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "body-parser": "*",
+    "ejs": "*",
+    "express": "^4.17.3",
+    "express-session": "^1.17.3",
+    "express-validator": "^6.14.0",
+    "mongoose": "*"
+  },
+  "name": "juiceshop",
+  "version": "1.0.0",
+  "description": "My first website using Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Juice",
+    "Shop"
+  ],
+  "author": "admin",
+  "license": "ISC"
+}

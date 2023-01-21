@@ -1,0 +1,61 @@
+<%- include('layouts/header'); -%>
+<body>
+  <%- include('layouts/nav'); -%>
+  <section class="w50">
+    <form name="myform" method="Post" onsubmit="return formSubmit();"  action="" >
+      <label>Name</label>
+      <input id="name" placeholder="First Last" type="text" name="name" value="<%= order.name %>"><br/>
+
+      <label>Email</label>
+      <input id="email" placeholder="email@domain.com" type="text" name="email"  value="<%= order.email %>"><br/>
+
+      <label>Phone</label>
+      <input id="phone" placeholder="123-123-1234" type="phone" name="phone"  value="<%= order.phone %>" ><br/>
+
+      <label>Post Code</label>
+      <input id="postcode" placeholder="X9X 9X9" type="postcode" name="postcode"  value="<%= order.postcode %>" ><br/>
+      
+      <label>Will you have lunch?</label>
+      <input type="radio" value="yes" <% if(order.lunch == 'yes') { %> checked <% } %> id="radio1" name="lunch">Yes
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="radio" value="no" <% if(order.lunch == 'no') { %> checked <% } %> id="radio2" name="lunch">No
+      <br/>
+
+      <label>Number of Tickets</label>
+      <select name="tickets" id="tickets">
+          <option value="">----- Select -----</option>
+          <option <% if(order.tickets == '1') { %> selected <% } %>  value="1">1</option>
+          <option <% if(order.tickets == '2') { %> selected <% } %>  value="2">2</option>
+          <option <% if(order.tickets == '3') { %> selected <% } %>  value="3">3</option>
+          <option <% if(order.tickets == '4') { %> selected <% } %>  value="4">4</option>
+          <option <% if(order.tickets == '5') { %> selected <% } %>  value="5">5</option>
+      </select><br/>
+
+      <label>Which Campus?</label>
+      <select name="campus" id="campus">
+          <option value="">----- Select -----</option>
+          <option <% if(order.campus == 'Doon') { %> selected <% } %>  value="Doon">Doon</option>
+          <option <% if(order.campus == 'Waterloo') { %> selected <% } %>  value="Waterloo">Waterloo</option>
+          <option <% if(order.campus == 'Cambridge') { %> selected <% } %>  value="Cambridge">Cambridge</option>
+      </select>
+
+      <br/><br/>
+
+      <input type="submit" value="Update">
+      <p id="errors">
+        <% 
+          if (typeof(errors) != 'undefined')
+          {
+            for (let error of errors)
+            {
+          %>
+              <p class="errors"> <%= error.msg %></p>
+          <%
+            }
+          }
+        %>
+      </p>
+    </form>  
+</section>
+</body>
+<%- include('layouts/footer'); -%>
